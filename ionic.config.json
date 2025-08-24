@@ -1,0 +1,7 @@
+{
+  "name": "DOGSWAB",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
