@@ -4,7 +4,7 @@ const config: CapacitorConfig = {
   appId: 'com.dogswab.app',
   appName: 'DOGSWAB',
   webDir: 'dist',
-  version: '1.0.7',
+  version: '1.0.10',
   server: {
     androidScheme: 'https',
     iosScheme: 'capacitor',
