@@ -4,7 +4,7 @@ const config: CapacitorConfig = {
   appId: 'com.dogswab.app',
   appName: 'DOGSWAB',
   webDir: 'dist',
-  bundledWebRuntime: false,
+  version: '1.0.3',
   server: {
     androidScheme: 'https',
     iosScheme: 'capacitor',
@@ -28,7 +28,7 @@ const config: CapacitorConfig = {
     },
     Geolocation: {
       permissions: ['location']
-    }
+    },
     SplashScreen: {
       launchShowDuration: 2000,
       backgroundColor: "#77e1c0",
