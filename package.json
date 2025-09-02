@@ -1,7 +1,7 @@
 {
   "name": "dogswab-pet-health-app",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "description": "AI-powered pet health consultation app with veterinary marketplace",
   "keywords": [
