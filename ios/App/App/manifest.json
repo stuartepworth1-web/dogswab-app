@@ -1,0 +1,62 @@
+{
+  "name": "DOGSWAB - Pet Health Assistant",
+  "short_name": "DOGSWAB",
+  "description": "AI-powered pet health consultation app with professional veterinary care and insurance integration",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#77e1c0",
+  "theme_color": "#2d2f63",
+  "categories": ["health", "medical", "lifestyle"],
+  "lang": "en-US",
+  "scope": "/",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "https://storage.reimage.dev/dogswabapp/dba9be83d5bd/original",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://storage.reimage.dev/dogswabapp/dba9be83d5bd/original",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "https://storage.reimage.dev/dogswabapp/dba9be83d5bd/original",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "New Consultation",
+      "short_name": "Consult",
+      "description": "Start a new AI health consultation",
+      "url": "/?action=new-chat",
+      "icons": [
+        {
+          "src": "https://storage.reimage.dev/dogswabapp/dba9be83d5bd/original",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Photo Analysis",
+      "short_name": "Photo",
+      "description": "Analyze pet symptoms from photos",
+      "url": "/?action=photo-analysis",
+      "icons": [
+        {
+          "src": "https://storage.reimage.dev/dogswabapp/dba9be83d5bd/original",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ]
+}
