@@ -56,9 +56,9 @@ workflows:
           echo "🔥 DELETING ALL CAPACITOR SPLASH IMAGES..."
           rm -f *.png
           echo "📥 DOWNLOADING DOGSWAB LOGO FOR ALL SPLASH SIZES..."
-          curl -L -o splash-2732x2732.png "https://storage.reimage.dev/dogswabapp/dba9be83d5bd/original"
-          curl -L -o splash-2732x2732-1.png "https://storage.reimage.dev/dogswabapp/dba9be83d5bd/original"
-          curl -L -o splash-2732x2732-2.png "https://storage.reimage.dev/dogswabapp/dba9be83d5bd/original"
+          curl -L --retry 3 --max-time 120 -o splash-2732x2732.png "https://storage.reimage.dev/dogswabapp/dba9be83d5bd/original"
+          curl -L --retry 3 --max-time 120 -o splash-2732x2732-1.png "https://storage.reimage.dev/dogswabapp/dba9be83d5bd/original"
+          curl -L --retry 3 --max-time 120 -o splash-2732x2732-2.png "https://storage.reimage.dev/dogswabapp/dba9be83d5bd/original"
           echo "🔄 FORCING FILE REFRESH..."
           touch *.png
           echo "📋 VERIFYING SPLASH FILES REPLACED:"
