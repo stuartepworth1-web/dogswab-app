@@ -1,0 +1,75 @@
+workflows:
+  ios-workflow:
+    name: iOS Workflow - DOGSWAB
+    max_build_duration: 120
+    instance_type: mac_mini_m1
+    environment:
+      node: 20.9.0
+      xcode: latest
+      cocoapods: default
+    cache:
+      cache_paths: []
+    scripts:
+      - name: Clear ALL caches aggressively
+        script: |
+          echo "🧹 AGGRESSIVE CACHE CLEARING..."
+          rm -rf ~/Library/Developer/Xcode/DerivedData/*
+          rm -rf ~/Library/Caches/com.apple.dt.Xcode
+          rm -rf ~/Library/Caches/com.apple.CoreSimulator
+          rm -rf ios/App/build/*
+          rm -rf node_modules/.cache
+          rm -rf ~/.npm/_cacache
+          rm -rf ios/App/App/Assets.xcassets/.DS_Store
+          rm -rf ios/App/App/Assets.xcassets/AppIcon.appiconset/.DS_Store
+          echo "🔄 Cleaning Capacitor..."
+          npx cap clean ios || true
+          echo "✅ All caches cleared!"
+      - name: Install dependencies
+        script: |
+          rm -f package-lock.json
+          npm install
+      - name: Build web app
+        script: |
+          npm run build
+      - name: FORCE icon refresh
+        script: |
+          echo "🎨 FORCING ICON REFRESH..."
+          cd ios/App/App/Assets.xcassets/AppIcon.appiconset
+          echo "Current icon files:"
+          ls -la *.png || echo "No PNG files found"
+          echo "Touching all icon files to force refresh..."
+          find . -name "*.png" -exec touch {} \;
+          echo "✅ Icon refresh complete!"
+      - name: Sync Capacitor
+        script: |
+          npx cap sync ios
+      - name: VERIFY icons before build
+        script: |
+          echo "🔍 VERIFYING ICON FILES..."
+          echo "Contents of AppIcon.appiconset:"
+          ls -la ios/App/App/Assets.xcassets/AppIcon.appiconset/
+          echo "Contents.json:"
+          cat ios/App/App/Assets.xcassets/AppIcon.appiconset/Contents.json
+          echo "Checking for DOGSWAB logo in AppIcon-512@2x.png..."
+          file ios/App/App/Assets.xcassets/AppIcon.appiconset/AppIcon-512@2x.png || echo "File not found"
+      - name: Install CocoaPods
+        script: |
+          cd ios/App
+          pod install --repo-update
+      - name: Build iOS app
+        script: |
+          cd ios/App
+          echo "🏗️ BUILDING WITH FRESH ICONS..."
+          xcodebuild -workspace App.xcworkspace \
+            -scheme App \
+            -configuration Release \
+            -destination generic/platform=iOS \
+            -archivePath build/App.xcarchive \
+            archive \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO \
+            PROVISIONING_PROFILE=""
+    artifacts:
+      - ios/App/build/App.xcarchive
+      - ios/App/build/logs/*.log
