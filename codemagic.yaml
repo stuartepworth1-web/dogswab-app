@@ -63,7 +63,6 @@ workflows:
           touch *.png
           echo "📋 VERIFYING SPLASH FILES REPLACED:"
           ls -la *.png
-          file splash-2732x2732.png
           echo "✅ SPLASH SCREEN NUCLEAR REPLACEMENT COMPLETE!"
           cd ../../AppIcon.appiconset
           echo "🔥 NUCLEAR ICON REFRESH..."
@@ -98,14 +97,12 @@ EOF
           echo "Contents.json:"
           cat ios/App/App/Assets.xcassets/AppIcon.appiconset/Contents.json
           echo "Checking for DOGSWAB logo in AppIcon-512@2x.png..."
-          file ios/App/App/Assets.xcassets/AppIcon.appiconset/AppIcon-512@2x.png || echo "File not found"
           echo "🖼️ VERIFYING SPLASH SCREEN FILES REPLACED..."
           echo "Contents of Splash.imageset:"
           ls -la ios/App/App/Assets.xcassets/Splash.imageset/
           echo "Splash Contents.json:"
           cat ios/App/App/Assets.xcassets/Splash.imageset/Contents.json
           echo "🔍 CHECKING IF SPLASH FILES ARE ACTUALLY DOGSWAB LOGO:"
-          file ios/App/App/Assets.xcassets/Splash.imageset/splash-2732x2732.png
           echo "File sizes:"
           ls -lh ios/App/App/Assets.xcassets/Splash.imageset/*.png
       - name: Install CocoaPods
