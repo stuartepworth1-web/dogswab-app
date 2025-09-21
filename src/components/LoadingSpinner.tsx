@@ -38,11 +38,7 @@ export const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
             <div className="w-12 h-12 border-4 border-mint-200 border-t-mint-500 rounded-full animate-spin" />
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="w-8 h-8 flex items-center justify-center">
-                <img 
-                  src="https://storage.reimage.dev/dogswabapp/dba9be83d5bd/original" 
-                  alt="DOGSWAB Logo" 
-                  className="h-full w-auto object-contain animate-pulse"
-                />
+                <span className="text-2xl animate-pulse">🐾</span>
               </div>
             </div>
           </div>

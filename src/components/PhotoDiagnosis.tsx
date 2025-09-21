@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Camera, Upload, X, AlertTriangle, CheckCircle, Clock, Zap } from 'lucide-react';
 import { HealthRecord, Pet } from '../types';
-import { analyzeHealthPhoto, VisionAnalysisResult } from '../services/visionService';
+import { analyzeEducationalPhoto, EducationalAnalysisResult } from '../services/visionService';
 
 interface PhotoDiagnosisProps {
   pet: Pet;
@@ -13,7 +13,7 @@ const PhotoDiagnosis: React.FC<PhotoDiagnosisProps> = ({ pet, onSave, onClose })
   const [photos, setPhotos] = useState<string[]>([]);
   const [description, setDescription] = useState('');
   const [isAnalyzing, setIsAnalyzing] = useState(false);
-  const [analysisResult, setAnalysisResult] = useState<VisionAnalysisResult | null>(null);
+  const [analysisResult, setAnalysisResult] = useState<EducationalAnalysisResult | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,7 +41,7 @@ const PhotoDiagnosis: React.FC<PhotoDiagnosisProps> = ({ pet, onSave, onClose })
     setIsAnalyzing(true);
     
     try {
-      const result = await analyzeHealthPhoto(photos[0], pet.name);
+      const result = await analyzeEducationalPhoto(photos[0], pet.name);
       setAnalysisResult(result);
     } catch (error) {
       alert('Analysis failed. Please try again.');
@@ -53,12 +53,12 @@ const PhotoDiagnosis: React.FC<PhotoDiagnosisProps> = ({ pet, onSave, onClose })
   const handleSave = () => {
     const record: Omit<HealthRecord, 'id'> = {
       petId: pet.id,
-      type: 'photo_diagnosis',
-      title: `Photo Analysis - ${new Date().toLocaleDateString()}`,
+      type: 'photo_educational',
+      title: `Educational Photo Review - ${new Date().toLocaleDateString()}`,
       description,
       photos,
-      aiAnalysis: analysisResult?.overallAssessment,
-      severity: 'medium',
+      educationalAnalysis: analysisResult?.overallAssessment,
+      severity: 'informational',
       createdAt: new Date()
     };
     
@@ -186,7 +186,7 @@ const PhotoDiagnosis: React.FC<PhotoDiagnosisProps> = ({ pet, onSave, onClose })
               
               {/* Overall Assessment */}
               <div className="bg-gpt-dark rounded-lg p-4">
-                <h4 className="font-semibold text-gpt-text mb-2">Overall Assessment</h4>
+                <h4 className="font-semibold text-gpt-text mb-2">Educational Assessment</h4>
                 <p className="text-sm text-gpt-text leading-relaxed">{analysisResult.overallAssessment}</p>
               </div>
               
@@ -261,15 +261,15 @@ const PhotoDiagnosis: React.FC<PhotoDiagnosisProps> = ({ pet, onSave, onClose })
           )}
 
           {/* Medical Disclaimer */}
-          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+          <div className="bg-red-50 border-2 border-red-300 rounded-lg p-4">
             <div className="flex items-start space-x-2">
-              <AlertTriangle className="w-5 h-5 text-yellow-600 mt-0.5 flex-shrink-0" />
-              <div className="text-sm text-yellow-800">
-                <p className="font-semibold mb-1">Medical Disclaimer</p>
+              <AlertTriangle className="w-6 h-6 text-red-600 mt-0.5 flex-shrink-0" />
+              <div className="text-sm text-red-800">
+                <p className="font-bold mb-2">⚠️ CRITICAL MEDICAL DISCLAIMER</p>
                 <p>
-                  This AI analysis is for informational purposes only and cannot replace 
-                  professional veterinary examination. Always consult with a veterinarian 
-                  for proper diagnosis and treatment.
+                  This AI analysis provides EDUCATIONAL INFORMATION ONLY and does NOT provide medical 
+                  diagnosis or treatment. This CANNOT replace professional veterinary examination. 
+                  For ALL health concerns, consult a licensed veterinarian immediately.
                 </p>
               </div>
             </div>

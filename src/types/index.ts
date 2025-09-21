@@ -59,13 +59,13 @@ export interface Subscription {
 export interface HealthRecord {
   id: string;
   petId: string;
-  type: 'symptom' | 'behavior' | 'weight' | 'medication' | 'vet_visit' | 'photo_diagnosis';
+  type: 'educational_note' | 'behavior_observation' | 'weight_tracking' | 'care_reminder' | 'vet_visit' | 'photo_educational';
   title: string;
   description: string;
-  severity?: 'low' | 'medium' | 'high' | 'emergency';
+  severity?: 'informational' | 'monitor' | 'vet_recommended' | 'emergency_contact_vet';
   photos?: string[];
-  aiAnalysis?: string;
-  vetRecommendation?: string;
+  educationalAnalysis?: string;
+  vetContactInfo?: string;
   createdAt: Date;
   resolvedAt?: Date;
 }

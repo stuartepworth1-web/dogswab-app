@@ -39,20 +39,25 @@ export class ErrorBoundary extends Component<Props, State> {
   }
 
   private reportError = (error: Error, errorInfo: ErrorInfo) => {
-    // In production, send to crash reporting service like Sentry
+    // In production, send to crash reporting service
     const errorReport = {
       message: error.message,
       stack: error.stack,
       componentStack: errorInfo.componentStack,
       timestamp: new Date().toISOString(),
       userAgent: navigator.userAgent,
-      url: window.location.href
+      url: window.location.href,
+      appVersion: '1.0.0',
+      userId: localStorage.getItem('dogswab-user') ? 'authenticated' : 'anonymous'
     };
 
     console.error('Error Report:', errorReport);
     
-    // TODO: Send to crash reporting service
-    // crashReportingService.captureException(error, errorReport);
+    // Send to crash reporting service in production
+    if (process.env.NODE_ENV === 'production') {
+      // Implementation would go here
+      console.log('Error report would be sent to crash reporting service');
+    }
   };
 
   private handleReload = () => {

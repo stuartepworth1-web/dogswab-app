@@ -64,10 +64,23 @@ export const VoiceInput: React.FC<VoiceInputProps> = ({ onTranscript, isListenin
   }, [onTranscript]);
 
   const startRecording = () => {
-    if (recognition && !isRecording) {
+    if (recognition && !isRecording && !permissionDenied) {
       setTranscript('');
       setPermissionDenied(false);
-      recognition.start();
+      try {
+        // Request microphone permission first
+        navigator.mediaDevices.getUserMedia({ audio: true })
+          .then(() => {
+            recognition.start();
+          })
+          .catch((error) => {
+            console.error('Microphone permission denied:', error);
+            setPermissionDenied(true);
+          });
+      } catch (error) {
+        console.error('Speech recognition start error:', error);
+        setPermissionDenied(true);
+      }
     }
   };
 
@@ -114,10 +127,13 @@ export const VoiceInput: React.FC<VoiceInputProps> = ({ onTranscript, isListenin
       {/* Voice Input Button */}
       <button
         onClick={toggleRecording}
+        disabled={permissionDenied}
         className={`w-10 h-10 rounded-full flex items-center justify-center transition-all ${
           isRecording 
             ? 'bg-red-500 text-white animate-pulse shadow-lg hover:scale-105' 
-            : 'glass-card text-dogswab-navy hover:bg-dogswab-mint/20 shadow-sm hover:scale-105'
+            : permissionDenied 
+              ? 'glass-card text-gray-400 cursor-not-allowed opacity-50'
+              : 'glass-card text-dogswab-navy hover:bg-dogswab-mint/20 shadow-sm hover:scale-105'
         }`}
         title={isRecording ? 'Stop recording' : 'Start voice input'}
       >

@@ -1,15 +1,15 @@
 // Mock Computer Vision Service for Pet Health Analysis
-export interface HealthAnalysis {
+export interface EducationalAnalysis {
   condition: string;
   confidence: number;
-  severity: 'low' | 'medium' | 'high' | 'emergency';
+  severity: 'informational' | 'monitor' | 'vet_recommended' | 'emergency_contact_vet';
   recommendations: string[];
   vetRequired: boolean;
   description: string;
 }
 
-export interface VisionAnalysisResult {
-  analysis: HealthAnalysis;
+export interface EducationalAnalysisResult {
+  analysis: EducationalAnalysis;
   detectedIssues: string[];
   overallAssessment: string;
 }
@@ -19,7 +19,7 @@ const mockConditions = [
   {
     condition: 'Skin Irritation',
     confidence: 0.85,
-    severity: 'medium' as const,
+    severity: 'monitor' as const,
     recommendations: [
       'Keep the affected area clean and dry',
       'Prevent scratching with an E-collar if needed',
@@ -32,7 +32,7 @@ const mockConditions = [
   {
     condition: 'Eye Discharge',
     confidence: 0.92,
-    severity: 'medium' as const,
+    severity: 'vet_recommended' as const,
     recommendations: [
       'Gently clean around the eye with warm water',
       'Avoid touching the eye directly',
@@ -45,7 +45,7 @@ const mockConditions = [
   {
     condition: 'Minor Wound',
     confidence: 0.78,
-    severity: 'low' as const,
+    severity: 'informational' as const,
     recommendations: [
       'Clean gently with saline solution',
       'Apply antibiotic ointment if available',
@@ -58,7 +58,7 @@ const mockConditions = [
   {
     condition: 'Severe Laceration',
     confidence: 0.95,
-    severity: 'emergency' as const,
+    severity: 'emergency_contact_vet' as const,
     recommendations: [
       'Apply direct pressure to control bleeding',
       'Do not remove any embedded objects',
@@ -70,7 +70,7 @@ const mockConditions = [
   }
 ];
 
-export const analyzeHealthPhoto = async (imageBase64: string, petName?: string): Promise<VisionAnalysisResult> => {
+export const analyzeEducationalPhoto = async (imageBase64: string, petName?: string): Promise<EducationalAnalysisResult> => {
   // Simulate API processing time
   await new Promise(resolve => setTimeout(resolve, 2000 + Math.random() * 2000));
 
@@ -92,26 +92,28 @@ export const analyzeHealthPhoto = async (imageBase64: string, petName?: string):
   };
 };
 
-const generateOverallAssessment = (condition: HealthAnalysis, petName?: string): string => {
+const generateOverallAssessment = (condition: EducationalAnalysis, petName?: string): string => {
   const petRef = petName ? petName : 'your pet';
   
-  let assessment = `Based on the uploaded photo, I can see signs consistent with ${condition.condition.toLowerCase()} in ${petRef}. `;
+  let assessment = `⚠️ EDUCATIONAL INFORMATION ONLY - This is not medical advice. Consult your veterinarian for all health concerns.\n\n`;
+  
+  assessment += `Based on the uploaded photo, I can see signs that may be consistent with ${condition.condition.toLowerCase()} in ${petRef}. `;
   
   assessment += `${condition.description}. `;
   
-  if (condition.severity === 'emergency') {
-    assessment += `🚨 This appears to be an emergency situation requiring immediate veterinary attention. `;
-  } else if (condition.severity === 'high') {
-    assessment += `⚠️ This condition requires prompt veterinary care within 24 hours. `;
-  } else if (condition.severity === 'medium') {
-    assessment += `This condition should be evaluated by a veterinarian within 2-3 days. `;
+  if (condition.severity === 'emergency_contact_vet') {
+    assessment += `🚨 EMERGENCY: Contact your veterinarian or emergency animal hospital RIGHT NOW. Do not delay professional care. `;
+  } else if (condition.severity === 'vet_recommended') {
+    assessment += `⚠️ Veterinary consultation recommended within 24-48 hours for proper evaluation. `;
+  } else if (condition.severity === 'monitor') {
+    assessment += `Monitor closely and consider veterinary consultation if symptoms persist or worsen. `;
   } else {
-    assessment += `This appears to be a minor issue that can be monitored at home. `;
+    assessment += `This appears to be something to monitor. When in doubt, consult your veterinarian. `;
   }
   
-  assessment += `My confidence in this assessment is ${Math.round(condition.confidence * 100)}%. `;
+  assessment += `Educational confidence level: ${Math.round(condition.confidence * 100)}%. `;
   
-  assessment += `Please note that this AI analysis is for informational purposes only and cannot replace professional veterinary examination.`;
+  assessment += `\n\n🩺 IMPORTANT: This educational analysis cannot replace professional veterinary examination. For any health concerns or medical decisions, consult a licensed veterinarian immediately.`;
   
   return assessment;
 };

@@ -24,7 +24,7 @@ export interface SubscriptionPlan {
 export const subscriptionPlans: SubscriptionPlan[] = [
   {
     id: 'basic',
-    name: 'Basic',
+    name: 'DOGSWAB Basic Monthly',
     price: 9.99,
     priceId: 'REPLACE_WITH_BASIC_PRICE_ID',
     features: [
@@ -36,7 +36,7 @@ export const subscriptionPlans: SubscriptionPlan[] = [
   },
   {
     id: 'premium',
-    name: 'Premium',
+    name: 'DOGSWAB Premium Monthly',
     price: 19.99,
     priceId: 'REPLACE_WITH_PREMIUM_PRICE_ID',
     popular: true,
@@ -51,7 +51,7 @@ export const subscriptionPlans: SubscriptionPlan[] = [
   },
   {
     id: 'pro',
-    name: 'Pro',
+    name: 'DOGSWAB Pro Monthly',
     price: 49.99,
     priceId: 'REPLACE_WITH_PRO_PRICE_ID',
     features: [

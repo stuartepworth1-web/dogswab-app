@@ -1,0 +1,31 @@
+# App Store Connect Response to Review Team
+
+## Response to Guideline 3.0 - Business (Pricing Confirmation)
+
+**Question:** Can you confirm that USD 49.99 is the intended price of your in-app purchase product, DOGSWAB Pro Monthly?
+
+**Answer:** Yes, we confirm that USD $49.99 per month is the correct and intended price for our "DOGSWAB Pro Monthly" subscription product. 
+
+This premium tier includes:
+- Everything in Premium plan
+- Video vet consultations  
+- 24/7 emergency hotline access
+- Family sharing for up to 5 members
+- Custom health reports
+- API access for advanced users
+
+The pricing reflects the comprehensive nature of this premium service tier and is competitive with similar professional pet health platforms.
+
+## Response to Other Issues
+
+**Guideline 2.3.2 - Promotional Images:** We have removed duplicate promotional images and created unique images for each subscription tier.
+
+**Guideline 4.0 - iPad Scrolling:** We have fixed the scrolling issue on iPad by adding proper scroll containers and adjusting the layout for larger screens.
+
+**Guideline 2.1 - Voice Recording Bug:** We have fixed the unresponsive audio recording button by adding proper microphone permission handling.
+
+**Guideline 1.5 - Support URL:** We have created a functional support page at https://dogswab.com/support with comprehensive help information.
+
+**Guideline 3.1.1 & 3.1.2 - In-App Purchase Compliance:** We have added functional Terms of Use and Privacy Policy links directly in the app binary as required for auto-renewable subscriptions.
+
+Thank you for your detailed review. We have addressed all identified issues and the app is ready for re-review.

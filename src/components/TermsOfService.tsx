@@ -33,12 +33,25 @@ export const TermsOfService: React.FC<TermsOfServiceProps> = ({ isOpen, onClose 
             <div className="flex items-start space-x-3">
               <AlertTriangle className="w-6 h-6 text-red-600 mt-0.5 flex-shrink-0" />
               <div>
-                <h3 className="font-semibold text-red-800 mb-2">IMPORTANT MEDICAL DISCLAIMER</h3>
-                <p className="text-sm text-red-700">
-                  DOGSWAB is NOT a substitute for professional veterinary care. Our AI provides general guidance only. 
-                  For emergencies or serious health concerns, contact your veterinarian immediately. We are not liable 
-                  for any health outcomes resulting from use of this app.
-                </p>
+                <h3 className="font-bold text-red-800 mb-3 text-base">🚨 CRITICAL MEDICAL DISCLAIMER</h3>
+                <div className="space-y-2 text-sm text-red-700">
+                  <p className="font-semibold">
+                    DOGSWAB provides EDUCATIONAL INFORMATION ONLY and does NOT provide medical advice, diagnosis, or treatment.
+                  </p>
+                  <p>
+                    We are NOT licensed veterinarians and do NOT practice veterinary medicine. This app CANNOT replace 
+                    professional veterinary examination, diagnosis, or treatment.
+                  </p>
+                  <p className="font-semibold">
+                    For ALL health concerns, symptoms, or medical decisions, you MUST consult with a licensed veterinarian.
+                  </p>
+                  <p className="font-bold text-red-900">
+                    🚨 EMERGENCIES: Contact your veterinarian or emergency animal hospital IMMEDIATELY. Do not delay professional care.
+                  </p>
+                  <p className="font-semibold">
+                    DOGSWAB Inc. is NOT liable for any health outcomes, medical decisions, or consequences resulting from use of this app.
+                  </p>
+                </div>
               </div>
             </div>
           </div>

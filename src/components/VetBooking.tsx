@@ -303,7 +303,7 @@ Confirmation ID: ${bookingResult.appointmentId}`);
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-dogswab-navy/70">Vet Payout (85%):</span>
-                  <span className="text-dogswab-navy/70">${(getAppointmentPrice() * 0.85).toFixed(2)}</span>
+                  <p>Your payment is processed securely through Stripe. We never store your card details. DOGSWAB earns a 15% commission on bookings.</p>
                 </div>
               </div>
             </div>

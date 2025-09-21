@@ -1,0 +1,86 @@
+# App Store Connect Submission Content
+
+## App Information:
+**App Name:** DOGSWAB
+**Subtitle:** Pet Health Education & Vet Directory
+**Category:** Medical
+**Secondary Category:** Lifestyle
+
+## Description (Copy this exactly):
+DOGSWAB provides pet health education and connects pet owners with licensed veterinarians and insurance resources.
+
+🐾 PET HEALTH EDUCATION (INFORMATION ONLY)
+• General pet care information and guidance
+• Educational content about pet wellness
+• Health tracking for educational purposes
+• Veterinary resource directory
+• NOT medical advice, diagnosis, or treatment
+
+🩺 VETERINARY DIRECTORY
+• Find licensed veterinarians near you
+• Book appointments with professionals
+• Connect with emergency care providers
+• Access veterinary clinic information
+
+📊 EDUCATIONAL TRACKING
+• Pet profile management
+• Educational record organization
+• Care reminder system
+• Educational tracking tools
+
+🛡️ INSURANCE RESOURCES
+• Compare pet insurance options
+• Educational insurance information
+• Coverage guidance and resources
+• Connect with insurance providers
+
+⚕️ CRITICAL MEDICAL DISCLAIMER
+DOGSWAB provides EDUCATIONAL INFORMATION ONLY and does NOT provide medical advice, diagnosis, or treatment. This app CANNOT replace professional veterinary examination. We are NOT licensed veterinarians. For ALL health concerns and medical decisions, consult a licensed veterinarian immediately. For emergencies, contact your veterinarian or emergency animal hospital RIGHT NOW.
+
+PRIVACY & SECURITY
+Your information is protected with HIPAA-level security measures and encrypted storage.
+
+SUBSCRIPTION PLANS
+• Basic: $9.99/month - Enhanced educational features and vet directory
+• Premium: $19.99/month - Unlimited educational consultations and vet booking
+• Pro: $49.99/month - Everything plus priority support and family sharing
+
+Download DOGSWAB today for pet health education and veterinary connections!
+
+## Keywords (Copy this exactly):
+pet health education, veterinary directory, pet care information, animal health resources, vet finder, pet insurance, dog care, cat care, pet wellness, veterinary services
+
+## App Review Information:
+**Sign-in required:** NO
+**Demo account:** Not required
+**Review notes:** This app provides pet health education and connects users with veterinary professionals. No medical diagnosis or treatment is provided.
+
+## Age Rating:
+**Age Group:** 4+
+**Content Descriptors:** 
+- Medical/Treatment Information: Infrequent/Mild
+- None for other categories
+
+## Privacy Information:
+**Data Collection:** YES
+- Contact Info (Email for account management)
+- Health & Fitness (Pet health records for tracking)
+- Usage Data (App analytics for improvement)
+
+**Data Use:**
+- App Functionality: All collected data
+- Analytics: Usage data only
+- Product Personalization: Health data for customized experience
+
+## Support Information:
+**Support URL:** https://dogswab.com/support
+**Marketing URL:** https://dogswab.com
+**Privacy Policy URL:** https://dogswab.com/privacy
+
+## Technical Information:
+**Bundle ID:** com.dogswab.app
+**Version:** 1.0.0
+**Build:** 1
+**Minimum iOS:** 13.0
+**Device Support:** iPhone, iPad
+**Orientation:** Portrait only

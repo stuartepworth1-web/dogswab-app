@@ -34,19 +34,19 @@ const HealthDashboard: React.FC<HealthDashboardProps> = ({
 
   const getSeverityColor = (severity?: string) => {
     switch (severity) {
-      case 'emergency': return 'text-red-600 bg-red-100';
-      case 'high': return 'text-orange-600 bg-orange-100';
-      case 'medium': return 'text-yellow-600 bg-yellow-100';
-      case 'low': return 'text-green-600 bg-green-100';
+      case 'emergency_contact_vet': return 'text-red-600 bg-red-100';
+      case 'vet_recommended': return 'text-orange-600 bg-orange-100';
+      case 'monitor': return 'text-yellow-600 bg-yellow-100';
+      case 'informational': return 'text-green-600 bg-green-100';
       default: return 'text-gray-600 bg-gray-100';
     }
   };
 
   const getTypeIcon = (type: string) => {
     switch (type) {
-      case 'photo_diagnosis': return <Camera className="w-4 h-4" />;
+      case 'photo_educational': return <Camera className="w-4 h-4" />;
       case 'vet_visit': return <Calendar className="w-4 h-4" />;
-      case 'symptom': return <AlertTriangle className="w-4 h-4" />;
+      case 'educational_note': return <AlertTriangle className="w-4 h-4" />;
       default: return <CheckCircle className="w-4 h-4" />;
     }
   };

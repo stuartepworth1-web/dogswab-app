@@ -66,24 +66,23 @@ workflows:
           echo "✅ SPLASH SCREEN NUCLEAR REPLACEMENT COMPLETE!"
           cd ../../AppIcon.appiconset
           echo "🔥 NUCLEAR ICON REFRESH..."
-          # Delete and recreate Contents.json to force Xcode refresh
           rm -f Contents.json
           cat > Contents.json << 'EOF'
-{
-  "images" : [
-    {
-      "filename" : "AppIcon-512@2x.png",
-      "idiom" : "ios-marketing",
-      "scale" : "1x",
-      "size" : "1024x1024"
-    }
-  ],
-  "info" : {
-    "author" : "xcode",
-    "version" : 1
-  }
-}
-EOF
+          {
+            "images" : [
+              {
+                "filename" : "AppIcon-1024.png",
+                "idiom" : "ios-marketing",
+                "scale" : "1x",
+                "size" : "1024x1024"
+              }
+            ],
+            "info" : {
+              "author" : "xcode",
+              "version" : 1
+            }
+          }
+          EOF
           echo "✅ Recreated Contents.json with only 1024x1024 icon"
           echo "✅ Icon refresh complete!"
       - name: Sync Capacitor
@@ -96,7 +95,7 @@ EOF
           ls -la ios/App/App/Assets.xcassets/AppIcon.appiconset/
           echo "Contents.json:"
           cat ios/App/App/Assets.xcassets/AppIcon.appiconset/Contents.json
-          echo "Checking for DOGSWAB logo in AppIcon-512@2x.png..."
+          echo "Checking for DOGSWAB logo in AppIcon-1024.png..."
           echo "🖼️ VERIFYING SPLASH SCREEN FILES REPLACED..."
           echo "Contents of Splash.imageset:"
           ls -la ios/App/App/Assets.xcassets/Splash.imageset/

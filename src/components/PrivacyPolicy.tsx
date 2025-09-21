@@ -141,6 +141,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ isOpen, onClose })
                 <p><strong>Email:</strong> privacy@dogswab.com</p>
                 <p><strong>Phone:</strong> 1-800-DOGSWAB</p>
                 <p><strong>Address:</strong> 123 Pet Health Ave, San Francisco, CA 94105</p>
+                <p><strong>Full Policy:</strong> <a href="/privacy" className="text-dogswab-mint hover:underline">dogswab.com/privacy</a></p>
               </div>
             </div>
 

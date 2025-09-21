@@ -4,7 +4,7 @@ const urlsToCache = [
   '/',
   '/index.html',
   '/manifest.json',
-  'https://storage.reimage.dev/dogswabapp/dba9be83d5bd/original'
+  '/dogswab-icon-192.png'
 ];
 
 self.addEventListener('install', (event) => {
@@ -29,8 +29,8 @@ self.addEventListener('fetch', (event) => {
 self.addEventListener('push', (event) => {
   const options = {
     body: event.data ? event.data.text() : 'New health reminder for your pet',
-    icon: 'https://storage.reimage.dev/dogswabapp/dba9be83d5bd/original',
-    badge: 'https://storage.reimage.dev/dogswabapp/dba9be83d5bd/original',
+    icon: '/dogswab-icon-192.png',
+    badge: '/dogswab-icon-192.png',
     vibrate: [100, 50, 100],
     data: {
       dateOfArrival: Date.now(),
@@ -40,12 +40,12 @@ self.addEventListener('push', (event) => {
       {
         action: 'explore',
         title: 'Open DOGSWAB',
-        icon: 'https://storage.reimage.dev/dogswabapp/dba9be83d5bd/original'
+        icon: '/dogswab-icon-96.png'
       },
       {
         action: 'close',
         title: 'Close notification',
-        icon: 'https://storage.reimage.dev/dogswabapp/dba9be83d5bd/original'
+        icon: '/dogswab-icon-96.png'
       }
     ]
   };

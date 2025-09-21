@@ -1,42 +1,35 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.dogswab.petapp',
+  appId: 'com.dogswab.app',
   appName: 'DOGSWAB',
   webDir: 'dist',
-  version: '1.0.0',
+  bundledWebRuntime: false,
+  ios: {
+    minVersion: '13.0',
+    scheme: 'DOGSWAB'
+  },
+  android: {
+    minVersion: 21,
+    compileSdkVersion: 34,
+    targetSdkVersion: 34
+  },
   server: {
     androidScheme: 'https',
-    iosScheme: 'capacitor',
-    hostname: 'localhost'
+    hostname: 'localhost',
+    iosScheme: 'capacitor'
   },
   plugins: {
-    App: {
-      launchUrl: 'capacitor://localhost',
-      launchAutoHide: true
-    },
-    Camera: {
-      permissions: ['camera', 'photos']
-    },
-    LocalNotifications: {
-      smallIcon: 'ic_stat_icon_config_sample',
-      iconColor: '#77e1c0',
-      sound: 'beep.wav'
-    },
-    Device: {
-      permissions: []
-    },
-    Geolocation: {
-      permissions: ['location']
-    },
     SplashScreen: {
       launchShowDuration: 2000,
       backgroundColor: "#77e1c0",
       showSpinner: false,
-      spinnerColor: "#2d2f63"
+      androidSplashResourceName: "splash",
+      splashFullScreen: true,
+      splashImmersive: true
     },
     StatusBar: {
-      style: 'default',
+      style: 'light',
       backgroundColor: "#77e1c0"
     }
   }

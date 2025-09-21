@@ -136,11 +136,7 @@ const PetManagement: React.FC<PetManagementProps> = ({
         {!isAddingPet ? (
           <div>
             <div className="h-12 sm:h-16 flex items-center justify-center mx-auto mb-4">
-              <img 
-                src="https://storage.reimage.dev/dogswabapp/dba9be83d5bd/original" 
-                alt="DOGSWAB Logo" 
-                className="h-full w-auto object-contain drop-shadow-lg"
-              />
+              <span className="text-4xl">🐾</span>
             </div>
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-lg sm:text-xl font-bold text-gpt-text">Your Pets</h2>
@@ -226,7 +222,9 @@ const PetManagement: React.FC<PetManagementProps> = ({
               {editingPet ? 'Edit Pet' : 'Add New Pet'}
             </h2>
             
-            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6 pb-20">
+              {/* Add proper scrolling container for iPad */}
+              <div className="max-h-[60vh] overflow-y-auto space-y-4 sm:space-y-6 pr-2">
               <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                 <div>
                   <label className="block text-sm font-semibold text-gpt-text mb-3 uppercase tracking-wide">
@@ -450,6 +448,7 @@ const PetManagement: React.FC<PetManagementProps> = ({
                     />
                   </div>
                 </div>
+              </div>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">

@@ -71,10 +71,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
         <div className="flex items-center justify-between px-6 py-5 border-b border-white/30 safe-area-top liquid-nav">
           <div className="flex items-center space-x-3">
             <div className="w-12 h-12 liquid-glass rounded-3xl flex items-center justify-center">
-              <img 
-                src="https://storage.reimage.dev/dogswabapp/dba9be83d5bd/original" 
-                alt="DOGSWAB Logo" 
-              />
+              <span className="text-2xl">🐾</span>
             </div>
             <div>
               <span className="text-xl font-bold text-dogswab-navy tracking-tight">DOGSWAB</span>

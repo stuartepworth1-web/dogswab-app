@@ -319,11 +319,7 @@ export const PetOnboarding: React.FC<PetOnboardingProps> = ({
         <div className="text-center mb-6 sm:mb-8">
           <div className="flex items-center justify-center mb-4">
             <div className="h-16 sm:h-20 flex items-center justify-center">
-              <img 
-                src="https://storage.reimage.dev/dogswabapp/3af8c0ebb5c4/original"
-                alt="DOGSWAB Logo" 
-                className="h-full w-auto object-contain drop-shadow-lg"
-              />
+              <span className="text-6xl">🐾</span>
             </div>
           </div>
           <h1 className="text-2xl sm:text-4xl font-bold text-gpt-text mb-4">

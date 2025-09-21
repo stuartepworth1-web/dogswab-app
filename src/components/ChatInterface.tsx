@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, Menu, Heart, Stethoscope, Camera, Calendar, Shield, Activity, Brain, Plus } from 'lucide-react';
+import { Send, Menu, Heart, Stethoscope, Camera, Calendar, Shield, Activity, Brain, Plus, AlertTriangle } from 'lucide-react';
 import { Capacitor } from '@capacitor/core';
 import { Message, Pet } from '../types';
 import { VoiceInput } from './VoiceInput';
@@ -94,11 +94,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
           
           <div className="flex items-center space-x-3">
             <div className="w-8 h-8 liquid-glass rounded-2xl flex items-center justify-center">
-              <img 
-                src="https://storage.reimage.dev/dogswabapp/dba9be83d5bd/original" 
-                alt="DOGSWAB Logo" 
-                className="h-full w-auto object-contain"
-              />
+              <span className="text-xl">🐾</span>
             </div>
             <div className="hidden sm:block">
               <h1 className="text-lg font-semibold text-dogswab-navy">DOGSWAB</h1>
@@ -130,54 +126,65 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
             {/* Professional Welcome Section */}
             <div className="text-center mb-6 sm:mb-8 px-4">
               <div className="w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <img 
-                  src="https://storage.reimage.dev/dogswabapp/dba9be83d5bd/original" 
-                  alt="DOGSWAB Logo" 
-                  className="h-full w-auto object-contain"
-                />
+                <span className="text-4xl">🐾</span>
               </div>
               <div className="w-20 h-20 bg-mint-500 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-lg">
                 <span className="text-white font-bold text-2xl">🐾</span>
               </div>
               <h2 className="text-xl sm:text-2xl font-semibold text-dogswab-navy mb-2">
-                AI Pet Health Diagnosis
+                Pet Health Education & Information
               </h2>
               <p className="text-dogswab-navy/70 leading-relaxed max-w-md mx-auto text-sm sm:text-base">
-                Get instant, professional health insights for your pet. Describe symptoms or upload photos for AI analysis.
+                Get general pet health information and connect with veterinarians. 
+                For medical advice, always consult a licensed veterinarian.
               </p>
             </div>
 
             {/* Professional Quick Actions */}
             <div className="grid gap-4 mb-6 sm:mb-8 px-4">
               {quickActions.map((action, index) => (
-                <button
-                  key={index}
-                  onClick={action.onClick}
-                  className="w-full p-4 sm:p-6 liquid-glass rounded-3xl liquid-card-hover transition-all duration-400 text-left group animate-fade-in"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <div className="flex items-center space-x-3">
-                    <div className={`w-12 h-12 sm:w-14 sm:h-14 ${action.color} rounded-3xl flex items-center justify-center text-white shadow-lg flex-shrink-0 group-hover:scale-110 transition-all duration-400`}>
-                      {action.icon}
+                <React.Fragment key={index}>
+                  <button
+                    onClick={action.onClick}
+                    className="w-full p-4 sm:p-6 liquid-glass rounded-3xl liquid-card-hover transition-all duration-400 text-left group animate-fade-in"
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    <div className="flex items-center space-x-3">
+                      <div className={`w-12 h-12 sm:w-14 sm:h-14 ${action.color} rounded-3xl flex items-center justify-center text-white shadow-lg flex-shrink-0 group-hover:scale-110 transition-all duration-400`}>
+                        {action.icon}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-semibold text-dogswab-navy text-base sm:text-lg">{action.title}</h3>
+                        <p className="text-dogswab-navy/60 mt-1 font-medium text-sm sm:text-base">{action.subtitle}</p>
+                      </div>
+                      <div className="w-8 h-8 rounded-full liquid-glass flex items-center justify-center flex-shrink-0 group-hover:bg-dogswab-mint group-hover:text-white transition-all duration-400">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </div>
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="font-semibold text-dogswab-navy text-base sm:text-lg">{action.title}</h3>
-                      <p className="text-dogswab-navy/60 mt-1 font-medium text-sm sm:text-base">{action.subtitle}</p>
-                    </div>
-                    <div className="w-8 h-8 rounded-full liquid-glass flex items-center justify-center flex-shrink-0 group-hover:bg-dogswab-mint group-hover:text-white transition-all duration-400">
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </div>
-                  </div>
-                </button>
+                  </button>
+                </React.Fragment>
               ))}
+            </div>
+
+            {/* Prominent Medical Disclaimer */}
+            <div className="bg-red-50 border-2 border-red-300 rounded-2xl p-4 mx-4 mb-6 shadow-lg">
+              <div className="flex items-start space-x-3">
+                <AlertTriangle className="w-6 h-6 text-red-600 mt-0.5 flex-shrink-0" />
+                <div className="text-sm text-red-700">
+                  <p className="font-bold mb-2 text-base">⚠️ MEDICAL DISCLAIMER - READ CAREFULLY</p>
+                  <p className="font-semibold mb-2">This app provides EDUCATIONAL INFORMATION ONLY and does NOT provide medical advice, diagnosis, or treatment.</p>
+                  <p className="mb-2">DOGSWAB cannot replace professional veterinary examination. For ALL health concerns, symptoms, or emergencies, consult a licensed veterinarian immediately.</p>
+                  <p className="font-semibold">In emergencies, contact your veterinarian or emergency animal hospital RIGHT NOW.</p>
+                </div>
+              </div>
             </div>
 
             {/* Professional Common Questions */}
             <div className="liquid-glass rounded-3xl shadow-xl overflow-hidden border border-white/30 mx-4">
               <div className="px-6 py-4 border-b border-white/30 liquid-glass-button">
-                <h3 className="font-semibold text-white text-base sm:text-lg">Common Questions</h3>
+                <h3 className="font-semibold text-white text-base sm:text-lg">General Pet Care Topics</h3>
               </div>
               <div className="divide-y divide-white/20">
                 {commonQuestions.map((question, index) => (
@@ -195,15 +202,20 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
             {/* Medical Disclaimer */}
             <div className="mt-6 px-4">
               <InlineMedicalDisclaimer />
+              <div className="text-center mt-4">
+                <button
+                  onClick={() => window.open('/privacy.html', '_blank')}
+                  className="text-dogswab-navy/60 hover:text-dogswab-navy text-sm underline"
+                >
+                  Privacy Policy
+                </button>
+              </div>
             </div>
           </div>
         ) : (
           <div className="max-w-2xl mx-auto py-4 space-y-4 min-h-full">
             {messages.map((message) => (
-              <div
-                key={message.id}
-                className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'} px-2`}
-              >
+              <div key={message.id} className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'} mb-4`}>
                 <div className="max-w-[85%] sm:max-w-[80%]">
                   {message.sender === 'user' ? (
                     <div className="liquid-glass-button text-white px-4 sm:px-6 py-3 sm:py-4 rounded-3xl rounded-br-xl shadow-lg">
@@ -212,7 +224,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
                   ) : (
                     <div className="flex items-start space-x-3">
                       <div className="w-8 h-8 sm:w-10 sm:h-10 liquid-glass-button rounded-3xl flex items-center justify-center flex-shrink-0 mt-1 shadow-lg">
-                        <Stethoscope className="w-5 h-5 text-white" />
+                        <span className="text-white">🤖</span>
                       </div>
                       <div className="liquid-glass px-4 sm:px-6 py-3 sm:py-4 rounded-3xl rounded-bl-xl shadow-lg border border-white/40">
                         <div className="text-dogswab-navy text-sm sm:text-base leading-relaxed font-medium whitespace-pre-wrap">
@@ -231,7 +243,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({
           <div className="flex justify-start max-w-2xl mx-auto px-2 sm:px-4">
             <div className="flex items-start space-x-3">
               <div className="w-8 h-8 sm:w-10 sm:h-10 liquid-glass-button rounded-3xl flex items-center justify-center flex-shrink-0 mt-1 shadow-lg animate-pulse-slow">
-                <Stethoscope className="w-5 h-5 text-white" />
+                <span className="text-white">🤖</span>
               </div>
               <div className="liquid-glass px-4 sm:px-6 py-3 sm:py-4 rounded-3xl rounded-bl-xl shadow-lg border border-white/40 shimmer">
                 <div className="flex items-center space-x-2">

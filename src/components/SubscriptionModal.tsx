@@ -133,6 +133,17 @@ const SubscriptionModal: React.FC<SubscriptionModalProps> = ({
           </div>
 
           <div className="mt-8 text-center">
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-4">
+              <p className="text-xs text-blue-700">
+                <strong>Auto-Renewable Subscriptions:</strong><br/>
+                • <strong>DOGSWAB Basic Monthly:</strong> $9.99/month<br/>
+                • <strong>DOGSWAB Premium Monthly:</strong> $19.99/month<br/>
+                • <strong>DOGSWAB Pro Monthly:</strong> $49.99/month<br/>
+                Payment charged to iTunes Account. Auto-renews unless cancelled 24 hours before period ends.<br/>
+                <button onClick={() => window.open('/terms.html', '_blank')} className="underline">Terms of Use</button> | 
+                <button onClick={() => window.open('/privacy.html', '_blank')} className="underline ml-1">Privacy Policy</button>
+              </p>
+            </div>
             <button
               onClick={() => onSubscribe(selectedTier)}
               disabled={currentTier === selectedTier}
@@ -141,7 +152,7 @@ const SubscriptionModal: React.FC<SubscriptionModalProps> = ({
               {currentTier === selectedTier ? 'Current Plan' : 'Upgrade Now'}
             </button>
             <p className="text-xs text-dogswab-navy/60 mt-2">
-              Cancel anytime. No hidden fees.
+              Managed by Apple App Store. Cancel in App Store settings.
             </p>
           </div>
         </div>

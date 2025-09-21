@@ -8,6 +8,7 @@ import { PrivacyPolicy } from './components/PrivacyPolicy';
 import { TermsOfService } from './components/TermsOfService';
 import { AccessibilityFeatures } from './components/AccessibilityFeatures';
 import { SubscriptionManagement } from './components/SubscriptionManagement';
+import { AppStoreCompliance } from './components/AppStoreCompliance';
 import { Sidebar } from './components/Sidebar';
 import { ChatInterface } from './components/ChatInterface';
 import { PetManagement } from './components/PetManagement';
@@ -16,6 +17,7 @@ import { SubscriptionModal } from './components/SubscriptionModal';
 import { PetOnboarding } from './components/PetOnboarding';
 import { VetRegistration } from './components/VetRegistration';
 import { InsuranceQuotes } from './components/InsuranceQuotes';
+import { PrivacyPolicyPage } from './components/PrivacyPolicyPage';
 import { useLocalStorage } from './hooks/useLocalStorage';
 import { generateAIResponse, categorizeMessage } from './services/aiService';
 import { createCheckoutSession, redirectToCheckout } from './services/stripeService';
@@ -32,7 +34,7 @@ interface User {
   emailVerified: boolean;
 }
 
-type View = 'chat' | 'pets' | 'health' | 'vet-registration';
+type View = 'chat' | 'pets' | 'health' | 'vet-registration' | 'privacy-policy';
 
 function App() {
   // User Authentication
@@ -75,6 +77,7 @@ function App() {
     timeInMinutes: number;
     type: 'checkup' | 'medication' | 'feeding' | 'exercise' | 'vet_followup' | 'general';
   }>>([]);
+  const [showComplianceModal, setShowComplianceModal] = useState(false);
   const [revenueStats, setRevenueStats] = useLocalStorage('dogswab-revenue', {
     totalRevenue: 0,
     monthlyRevenue: 0,
@@ -90,8 +93,13 @@ function App() {
   // Show medical disclaimer on first use
   React.useEffect(() => {
     const hasAcceptedDisclaimer = localStorage.getItem('dogswab-medical-disclaimer-accepted');
-    if (!hasAcceptedDisclaimer) {
+    const hasSeenCompliance = localStorage.getItem('dogswab-compliance-seen');
+    
+    // Always show disclaimer on first app launch
+    if (!hasAcceptedDisclaimer || hasAcceptedDisclaimer !== 'true') {
       setShowMedicalDisclaimer(true);
+    } else if (!hasSeenCompliance) {
+      setShowComplianceModal(true);
     }
   }, []);
 
@@ -506,6 +514,8 @@ Expected monthly earnings: $2,000-$8,000`);
                 </div>
               </div>
             </div>
+          ) : currentView === 'privacy-policy' ? (
+            <PrivacyPolicyPage onBack={() => setCurrentView('chat')} />
           ) : null}
         </div>
 
@@ -534,6 +544,22 @@ Expected monthly earnings: $2,000-$8,000`);
           isOpen={showTermsOfService}
           onClose={() => setShowTermsOfService(false)}
         />
+
+        {/* Terms and Privacy Links - Required for App Store */}
+        <div className="fixed bottom-4 left-4 z-40 space-y-2">
+          <button
+            onClick={() => setShowTermsOfService(true)}
+            className="block text-xs text-white/70 hover:text-white underline bg-black/20 px-2 py-1 rounded"
+          >
+            Terms of Use
+          </button>
+          <button
+            onClick={() => setShowPrivacyPolicy(true)}
+            className="block text-xs text-white/70 hover:text-white underline bg-black/20 px-2 py-1 rounded"
+          >
+            Privacy Policy
+          </button>
+        </div>
 
         {/* Accessibility Features */}
         <AccessibilityFeatures
@@ -590,6 +616,15 @@ Expected monthly earnings: $2,000-$8,000`);
             }}
           />
         )}
+
+        {/* App Store Compliance Modal */}
+        <AppStoreCompliance
+          isOpen={showComplianceModal}
+          onClose={() => {
+            setShowComplianceModal(false);
+            localStorage.setItem('dogswab-compliance-seen', 'true');
+          }}
+        />
 
         {/* Revenue Stats (Development Only) */}
         {process.env.NODE_ENV === 'development' && (
